@@ -165,6 +165,10 @@ class UnionPaginator
         if (!$this->unionQuery) {
             $this->prepareUnionQuery();
         }
+        
+        if (is_null($page)) {
+            $page = LengthAwarePaginator::resolveCurrentPage($pageName);
+        }
 
         $paginated = $this->executePagination($perPage, $columns, $pageName, $page);
 
